@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 5 elements from project &apos;znzpApp&apos;&#x0D;&#x0A;- Original project: &apos;znzpApp&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     znzpApp/src/com.example.android.supportv13&#x0D;&#x0A;     znzpApp/src/com.example.android.supportv13.app&#x0D;&#x0A;     znzpApp/src/com.example.android.supportv13.view&#x0D;&#x0A;     res&#x0D;&#x0A;     AndroidManifest.xml&#x0D;&#x0A;- Delete subpackages" description="Delete elements" element1="AndroidManifest.xml" element2="res" element3="/src&lt;com.example.android.supportv13.view" element4="/src&lt;com.example.android.supportv13.app" element5="/src&lt;com.example.android.supportv13" element6="/src&lt;com.example.android" element7="/src&lt;com.example" element8="/src&lt;com" elements="6" flags="589830" id="org.eclipse.jdt.ui.delete" resources="2" stamp="1591600794048" subPackages="true" version="1.0"/>
+</session>

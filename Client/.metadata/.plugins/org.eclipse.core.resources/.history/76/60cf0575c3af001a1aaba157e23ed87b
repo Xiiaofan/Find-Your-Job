@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">智能招聘App</string>
+    <string name="login_userName">用户名:</string>
+    <string name="xygk">智能招聘App</string>
+    <string name="login_password">密&#160;&#160;&#160;&#160;码:</string>
+    <string name="login_loginBtn">登&#160;&#160;录</string>
+    <string name="login_regBtn">注&#160;&#160;册</string>
+    <string name="login_clearBtn">清&#160;&#160;空</string>
+    <string name="pinglunguanli">评论管理</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_main">智能招聘App</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_news">消息中心</string>
+    <string name="title_activity_reg">智能招聘App</string>
+    <string name="title_activity_newsdetail">智能招聘App</string>
+    <string name="title_activity_order">智能招聘App</string>
+    <string name="gerenxinxi">个人信息</string>
+    <string name="ssjg">搜索结果</string>
+    <string name="wzxq">文章详情</string>
+
+    <string-array name="yhlx">
+        <item>Company</item>
+        <item>Individual</item>
+    </string-array>
+    <string-array name="hy">
+        <item>IT业</item>
+        <item>服务</item>
+        <item>金融</item>
+        <item>运输</item>
+        <item>农业</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,235 @@
+package com.myapp.activity;
+
+import net.tsz.afinal.FinalActivity;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.ActionBar;
+import android.support.v4.app.Fragment;
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.os.Build;
+
+import com.alibaba.fastjson.JSONObject;
+import com.myapp.activity.R;
+import com.myapp.activity.LoginActivity.LoginThread;
+import com.myapp.common.HttpUtil;
+import com.myweb.domain.User;
+
+public class RegActivity extends FinalActivity {
+
+	User user;// save
+
+	EditText loginnameTxt;
+
+	EditText passwordTxt;
+	
+	EditText usernameTxt;
+
+	EditText emailtxt;
+
+	EditText reg_teltxt;
+	
+	TextView textView71;
+
+	private Spinner yhlx;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
+		setContentView(R.layout.activity_reg);
+
+		loginnameTxt = (EditText) findViewById(R.id.reg_loginnametxt);
+
+		passwordTxt = (EditText) findViewById(R.id.reg_passwordtxt);
+		
+		usernameTxt = (EditText) findViewById(R.id.reg_usernametxt);
+
+		emailtxt = (EditText) findViewById(R.id.reg_emailtxt);
+
+		reg_teltxt = (EditText) findViewById(R.id.reg_teltxt);
+		
+		textView71 = (TextView) findViewById(R.id.textView71);
+
+		yhlx = (Spinner) findViewById(R.id.yhlx);
+
+		yhlx.setOnItemSelectedListener(new OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view,
+					int pos, long id) {
+				switch (pos) {
+				case 0:
+					textView71.setText("Company:");
+					break;
+				case 1:
+					textView71.setText("Name:   ");
+					break;
+				}
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+				// Another interface callback
+			}
+		});
+
+		// register
+		Button regBtn = (Button) findViewById(R.id.reg_regbtn);
+
+		regBtn.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+
+				Thread regThread = new Thread(new RegThread());
+
+				regThread.start();
+			}
+		});
+	}
+
+	// Register for multithreading
+	class RegThread implements Runnable {
+
+		public void run() {
+			try {
+
+				String loginname = loginnameTxt.getText().toString();
+
+				String loginpsw = passwordTxt.getText().toString();
+				
+				String tel = reg_teltxt.getText().toString();
+
+				String email = emailtxt.getText().toString();
+
+				String username = usernameTxt.getText().toString();
+				
+				String usertype=yhlx.getSelectedItem().toString();
+				
+				 
+
+				User user = new User();
+
+				user.setLoginname(loginname);
+
+				user.setLoginpsw(loginpsw);
+				
+				user.setUsername(username);
+
+				user.setTel(tel);
+
+				user.setEmail(email);
+				
+				user.setUsertype(usertype);
+
+				// user.setUsername(username);
+
+				System.out.println("=============="
+						+ JSONObject.toJSONString(user));
+
+				JSONObject paraObj = new JSONObject();
+
+				paraObj.put("action", "reg");
+
+				paraObj.put("user", JSONObject.toJSONString(user));
+
+				String result = HttpUtil.getJsonFromServlet(paraObj.toString(),
+						"UserService");
+
+				if (result.equals("")) {
+
+					Message msg = new Message();
+
+					msg.what = 2;// error
+
+					handler.sendMessage(msg);
+				} else {
+					Message msg = new Message();
+
+					msg.what = 3;// success
+
+					msg.obj = result.toString();
+
+					handler.sendMessage(msg);
+
+				}
+
+			} catch (Exception ex) {
+
+				System.out.println("ex: " + ex.getMessage());
+
+				Message msg = new Message();
+
+				msg.what = 1;// error
+
+			}
+		}
+	}
+
+	// Handler
+	Handler handler = new Handler() {
+		public void handleMessage(Message msg) {
+
+			super.handleMessage(msg);
+
+			switch (msg.what) {
+
+			case 2:
+				Toast.makeText(getApplicationContext(), "Registration failed, please contact the administrator!",
+						Toast.LENGTH_SHORT).show();
+				break;
+
+			case 3:
+
+				String result = (String) msg.obj;
+				try {
+
+					Toast.makeText(getApplicationContext(), "Success!",
+							Toast.LENGTH_SHORT).show();
+
+					Intent intent = new Intent(RegActivity.this,
+							LoginActivity.class);
+					// Activity
+					startActivity(intent);
+
+				} catch (Exception ex) {
+
+					System.out.println("ex: " + ex.getMessage());
+				}
+				break;
+			}
+
+		}
+	};
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		// getMenuInflater().inflate(R.menu.main, menu);
+
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+
+		return super.onOptionsItemSelected(item);
+	}
+
+}

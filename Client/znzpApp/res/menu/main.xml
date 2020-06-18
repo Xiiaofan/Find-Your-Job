@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.myapp.activity.MainActivity" >
+
+    <item
+        android:id="@+id/newssearch"
+        android:orderInCategory="100"
+        android:title="search"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/xxgk"
+        android:orderInCategory="100"
+        android:title="school introduction"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/gerenxinxi"
+        android:orderInCategory="100"
+        android:title="personnal infos"
+        app:showAsAction="never"/>
+
+</menu>

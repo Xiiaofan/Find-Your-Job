@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Find Your Boss</string>
+    <string name="login_userName">Account:</string>
+    <string name="xygk">Find Your Boss</string>
+    <string name="login_password">Password:</string>
+    <string name="login_loginBtn">Login</string>
+    <string name="login_regBtn">Register</string>
+    <string name="login_clearBtn">清&#160;&#160;空</string>
+    <string name="pinglunguanli">评论管理</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_main">Find Your Boss</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_news">消息中心</string>
+    <string name="title_activity_reg">Find Your Boss</string>
+    <string name="title_activity_newsdetail">Find Your Boss</string>
+    <string name="title_activity_order">Find Your Boss</string>
+    <string name="gerenxinxi">个人信息</string>
+    <string name="ssjg">搜索结果</string>
+    <string name="wzxq">文章详情</string>
+
+    <string-array name="yhlx">
+        <item>Company</item>
+        <item>Individual</item>
+    </string-array>
+    <string-array name="hy">
+        <item>IT</item>
+        <item>Service</item>
+        <item>Finance</item>
+        <item>Transportation</item>
+        <item>Agriculture</item>
+    </string-array>
+
+</resources>
